@@ -1,1 +1,9 @@
 # MVC-Architecture
+
+Model (Data Layer)- This is where the data is stored for your app. The model is decoupled from the views and controllers and has deliberate ignorance from the wider context. Whenever a model changes, it will notify its observers that a change has occurred using an Event Dispatcher. 
+
+View (Presentation Layer)- This part of your App has access to the DOM and is responsible for setting up Event Handlers such as: click, onmouseover, onmouseout, etc. The view is also responsible for the presentation of the HTML. In the To Do List App, the view will be responsible for displaying the list of tasks to the user. However, whenever a user enters in a new task through the input field, the view will use an Event Dispatcher to notify the controller, then the controller will update the model. This allows for swift decoupling of the view from the model.
+
+Controller (Application Logic)- The controller is the glue between the model and the view. The controller processes and responds to events set off by either the model or view. It updates the model whenever the user manipulates the view, and can also be used to update the view whenever the model changes. But, either way is completely acceptable. In the To Do list App, when the user clicks the add task button, the click is forwarded to the controller, and the controller modifies the model by adding the task to it. Any other decision making or logic can also be performed here, such as: saving the data using HTML local storage, making an asynchronous save to the database/server, and more.
+
+Event Dispatcher - The Event Dispatcher is an object that allows you to attach an unlimited number of functions/methods to it. When you finally call the notify method on that Event object, every method you attached to that Event will be ran
